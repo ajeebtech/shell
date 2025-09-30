@@ -156,6 +156,28 @@ int execute_builtin(char** args) {
         }
         return 1;
     }
+    if (strcmp(args[0], "add_alias") == 0) {
+        if (args[1] == NULL || args[2] == NULL) {
+            fprintf(stderr, "shell: add_alias usage: add_alias name command...\n");
+        } else {
+            char full_command[MAX_LINE];
+            strcpy(full_command, args[2]);
+            for (int i = 3; args[i] != NULL; i++) {
+                strcat(full_command, " ");
+                strcat(full_command, args[i]);
+            }
+            add_alias(args[1], full_command);
+        }
+        return 1;
+    }
+    if (strcmp(args[0], "remove_alias") == 0) {
+        if (args[1] == NULL) {
+            fprintf(stderr, "shell: remove_alias usage: remove_alias name\n");
+        } else {
+            remove_alias(args[1]);
+        }
+        return 1;
+    }
     return 0;
 }
 
