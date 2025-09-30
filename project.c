@@ -29,8 +29,11 @@ void add_history_command(char *line) {
 }
 
 void print_history() {
-    for (int i = 0; i < history_count; i++) {
-        printf("%d %s\n", i+1, history[i]);
+    HIST_ENTRY **the_list = history_list();
+    if (the_list) {
+        for (int i = 0; the_list[i]; i++) {
+            printf("%d %s\n", i + history_base, the_list[i]->line);
+        }
     }
 }
 
@@ -107,10 +110,10 @@ int execute_builtin(char** args) {
     if (strcmp(args[0], "exit") == 0) {
         exit(0);
     }
-    if (strcmp(args[0], "history") == 0) {
-        print_history();
-        return 1;
-    }
+    if (strcmp(args[0], "history") == 0 || strcmp(args[0], "print_history") == 0) {
+    print_history();
+    return 1;
+}
     if (strcmp(args[0], "alias") == 0) {
         if (args[1] == NULL) {
             for (int i = 0; i < alias_count; i++) {
