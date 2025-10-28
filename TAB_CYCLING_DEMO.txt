@@ -1,0 +1,156 @@
+╔═══════════════════════════════════════════════════════════════╗
+║          TAB COMPLETION - CYCLING THROUGH MATCHES             ║
+╚═══════════════════════════════════════════════════════════════╝
+
+Tab completion now properly cycles through ALL matching options!
+
+═══════════════════════════════════════════════════════════════
+
+EXAMPLE 1: Cycling Through Commands Starting with "c"
+─────────────────────────────────────────────────────────────
+
+Type: c
+Press: [TAB]      →  cat
+Press: [TAB]      →  cd
+Press: [TAB]      →  clear
+Press: [TAB]      →  cp
+Press: [TAB]      →  cat     (cycles back to first)
+
+═══════════════════════════════════════════════════════════════
+
+EXAMPLE 2: Cycling Through Commands Starting with "h"
+─────────────────────────────────────────────────────────────
+
+Type: h
+Press: [TAB]      →  head
+Press: [TAB]      →  help
+Press: [TAB]      →  history
+Press: [TAB]      →  hostname
+Press: [TAB]      →  head     (cycles back)
+
+═══════════════════════════════════════════════════════════════
+
+EXAMPLE 3: Cycling Through Files Starting with "t"
+─────────────────────────────────────────────────────────────
+
+Type: cat t
+Press: [TAB]      →  cat test1.txt
+Press: [TAB]      →  cat test2.txt
+Press: [TAB]      →  cat test1.txt  (cycles back)
+
+═══════════════════════════════════════════════════════════════
+
+EXAMPLE 4: All Files (Empty Prefix)
+─────────────────────────────────────────────────────────────
+
+Type: ls 
+Press: [TAB]      →  ls demo.txt
+Press: [TAB]      →  ls example.sh
+Press: [TAB]      →  ls notes.md
+Press: [TAB]      →  ls test1.txt
+Press: [TAB]      →  ls test2.txt
+Press: [TAB]      →  ls demo.txt    (cycles back)
+
+═══════════════════════════════════════════════════════════════
+
+EXAMPLE 5: Commands Starting with "e"
+─────────────────────────────────────────────────────────────
+
+Type: e
+Press: [TAB]      →  echo
+Press: [TAB]      →  exit
+Press: [TAB]      →  echo     (cycles back)
+
+═══════════════════════════════════════════════════════════════
+
+HOW IT WORKS
+─────────────────────────────────────────────────────────────
+
+1. Type a few letters (or nothing)
+2. Press TAB to see the first match
+3. Press TAB again to see the next match
+4. Keep pressing TAB to cycle through ALL matches
+5. It loops back to the first match after showing all
+
+RESETTING THE CYCLE
+─────────────────────────────────────────────────────────────
+
+The completion resets when you:
+• Type a new character
+• Delete a character (backspace)
+• Press Enter
+
+Example:
+  Type: c[TAB]        → cat
+  Press: [TAB]        → cd
+  Type: l             → cdl (now typing again)
+  Press: backspace    → cd
+  Press: [TAB]        → cat (resets, starts from beginning)
+
+═══════════════════════════════════════════════════════════════
+
+VISUAL EXAMPLE IN THE GUI
+─────────────────────────────────────────────────────────────
+
+You type:      sandbox> c
+Press TAB:     sandbox> cat
+Press TAB:     sandbox> cd
+Press TAB:     sandbox> clear
+Press TAB:     sandbox> cp
+Press TAB:     sandbox> cat    ← back to first!
+
+You type:      sandbox> echo "test" > m
+Press TAB:     sandbox> echo "test" > myfile.txt
+Press TAB:     sandbox> echo "test" > mydata.dat
+Press TAB:     sandbox> echo "test" > myfile.txt ← cycles!
+
+═══════════════════════════════════════════════════════════════
+
+TRY THIS NOW
+─────────────────────────────────────────────────────────────
+
+1. Launch: python3 sandbox_gui.py
+
+2. Try command cycling:
+   sandbox> c[TAB][TAB][TAB][TAB]
+   Watch it cycle: cat → cd → clear → cp → cat
+
+3. Try file cycling:
+   sandbox> cat [TAB][TAB][TAB]
+   Watch it cycle through all files in sandbox/
+
+4. Try partial matches:
+   sandbox> he[TAB][TAB][TAB]
+   Cycles: head → help → history → hostname
+
+5. Keep pressing Tab to see ALL options!
+
+═══════════════════════════════════════════════════════════════
+
+ALL COMMANDS THAT AUTOCOMPLETE (30 total)
+─────────────────────────────────────────────────────────────
+
+cat      cd       clear    cp       date     echo     exit
+find     grep     head     help     history  hostname ls
+mkdir    mv       pwd      rmdir    sleep    sort     stats
+tail     touch    unalias  uniq     wc       which    whoami
+
+Plus: alias (custom command)
+
+═══════════════════════════════════════════════════════════════
+
+TIPS
+─────────────────────────────────────────────────────────────
+
+✓ Press Tab multiple times to explore all options
+✓ Works for both commands and filenames
+✓ Automatically cycles back to the first match
+✓ Type more letters to narrow down matches
+✓ Backspace resets the cycle if you want to start over
+
+═══════════════════════════════════════════════════════════════
+
+                    ENJOY TAB CYCLING! 🎉
+
+═══════════════════════════════════════════════════════════════
+

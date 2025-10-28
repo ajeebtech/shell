@@ -1,0 +1,211 @@
+═══════════════════════════════════════════════════════════════
+  SANDBOXED SHELL - DEMONSTRATION EXAMPLES
+═══════════════════════════════════════════════════════════════
+
+This file contains example commands to demonstrate all the
+sandboxing features to your professor/TA.
+
+═══════════════════════════════════════════════════════════════
+  1. BASIC FUNCTIONALITY
+═══════════════════════════════════════════════════════════════
+
+# Show available commands
+sandbox> help
+
+# Display current directory
+sandbox> pwd
+
+# List files in sandbox
+sandbox> ls
+
+# Create a test file
+sandbox> echo "Hello from sandboxed shell!" > test.txt
+
+# Read the file
+sandbox> cat test.txt
+
+# Show command history
+sandbox> history
+
+═══════════════════════════════════════════════════════════════
+  2. DEMONSTRATE COMMAND WHITELIST
+═══════════════════════════════════════════════════════════════
+
+# These commands work (they're whitelisted):
+sandbox> ls
+sandbox> cat test.txt
+sandbox> echo "Safe command"
+sandbox> pwd
+sandbox> whoami
+sandbox> date
+
+# Show that whitelist is working:
+sandbox> python3
+# ❌ Will be BLOCKED - not in whitelist
+
+sandbox> vim
+# ❌ Will be BLOCKED - not in whitelist
+
+═══════════════════════════════════════════════════════════════
+  3. DEMONSTRATE COMMAND BLACKLIST (Security)
+═══════════════════════════════════════════════════════════════
+
+# Try dangerous commands - these will be blocked:
+sandbox> sudo ls
+# ❌ BLOCKED: Command 'sudo' is not allowed (security risk)
+
+sandbox> rm -rf /
+# ❌ BLOCKED: Command 'rm' is not allowed (security risk)
+
+sandbox> chmod 777 test.txt
+# ❌ BLOCKED: Command 'chmod' is not allowed (security risk)
+
+sandbox> su root
+# ❌ BLOCKED: Command 'su' is not allowed (security risk)
+
+sandbox> reboot
+# ❌ BLOCKED: Command 'reboot' is not allowed (security risk)
+
+═══════════════════════════════════════════════════════════════
+  4. DEMONSTRATE FILE SYSTEM RESTRICTIONS
+═══════════════════════════════════════════════════════════════
+
+# These work (inside sandbox):
+sandbox> mkdir mydir
+sandbox> cd mydir
+sandbox> pwd
+sandbox> touch file1.txt file2.txt
+sandbox> ls
+sandbox> cd ..
+
+# Try to access outside sandbox:
+sandbox> cd /etc
+# ❌ BLOCKED: Access denied to '/etc' (outside sandbox)
+
+sandbox> cd /tmp
+# ❌ BLOCKED: Access denied to '/tmp' (outside sandbox)
+
+sandbox> cat /etc/passwd
+# ❌ BLOCKED: Access denied (outside sandbox)
+
+═══════════════════════════════════════════════════════════════
+  5. DEMONSTRATE PIPELINES
+═══════════════════════════════════════════════════════════════
+
+sandbox> ls | grep txt
+
+sandbox> echo -e "apple\nbanana\ncherry" | sort
+
+sandbox> cat test.txt | wc -l
+
+sandbox> ls | wc -l
+
+═══════════════════════════════════════════════════════════════
+  6. DEMONSTRATE I/O REDIRECTION
+═══════════════════════════════════════════════════════════════
+
+# Output redirection
+sandbox> echo "Line 1" > output.txt
+sandbox> echo "Line 2" >> output.txt
+sandbox> cat output.txt
+
+# Input redirection
+sandbox> wc -l < output.txt
+
+# Both input and output
+sandbox> sort < output.txt > sorted.txt
+sandbox> cat sorted.txt
+
+═══════════════════════════════════════════════════════════════
+  7. DEMONSTRATE RESOURCE LIMITS
+═══════════════════════════════════════════════════════════════
+
+# The shell has these limits set:
+# - CPU time: 30 seconds per process
+# - Memory: 100 MB per process
+# - Max processes: 20
+# - Max open files: 64
+
+# You can explain that these are enforced via setrlimit()
+# in the C code, preventing resource exhaustion attacks
+
+═══════════════════════════════════════════════════════════════
+  8. DEMONSTRATE MONITORING & STATISTICS
+═══════════════════════════════════════════════════════════════
+
+# Show sandbox statistics
+sandbox> stats
+
+# This will display:
+# - Runtime (how long shell has been running)
+# - Commands executed (successful)
+# - Commands blocked (security violations)
+
+═══════════════════════════════════════════════════════════════
+  9. DEMONSTRATE ALIASES
+═══════════════════════════════════════════════════════════════
+
+# Create alias
+sandbox> alias ll='ls -la'
+sandbox> ll
+
+# Show all aliases
+sandbox> alias
+
+# Remove alias
+sandbox> unalias ll
+
+═══════════════════════════════════════════════════════════════
+  10. EXIT SAFELY
+═══════════════════════════════════════════════════════════════
+
+sandbox> exit
+
+# This will show final statistics before exiting
+
+═══════════════════════════════════════════════════════════════
+  TALKING POINTS FOR DEMONSTRATION
+═══════════════════════════════════════════════════════════════
+
+1. VISUAL INTERFACE:
+   - Show the pygame GUI with orange border indicating sandbox
+   - Point out the header showing active security features
+   - Highlight the real-time statistics display
+   - Demonstrate color-coded output (green/red/yellow/cyan)
+
+2. SECURITY FEATURES:
+   - Resource limits prevent DoS attacks (CPU, memory, processes)
+   - Command whitelist ensures only safe commands execute
+   - Command blacklist blocks known dangerous operations
+   - Path restrictions prevent access to system files
+   - All operations are logged and monitored
+
+3. SHELL FEATURES:
+   - Full command parsing and execution
+   - Pipelines and I/O redirection
+   - Background processes
+   - Tab completion
+   - Command history
+   - Aliases
+   - Built-in commands
+
+4. IMPLEMENTATION DETAILS:
+   - Written in C using POSIX APIs
+   - Uses fork/exec for process creation
+   - setrlimit() for resource constraints
+   - realpath() for path validation
+   - readline library for enhanced input
+   - Python/pygame for visualization
+
+5. EDUCATIONAL VALUE:
+   - Demonstrates process management
+   - Shows practical security implementation
+   - Illustrates system call usage
+   - Combines systems programming with GUI development
+
+═══════════════════════════════════════════════════════════════
+
+Pro tip: Run with GUI (python3 sandbox_gui.py) for best demo!
+
+═══════════════════════════════════════════════════════════════
+

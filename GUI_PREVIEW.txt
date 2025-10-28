@@ -1,0 +1,194 @@
+╔════════════════════════════════════════════════════════════════════════╗
+║                   PYGAME GUI - VISUAL PREVIEW                          ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+When you run: python3 sandbox_gui.py
+
+You'll see a window that looks like this:
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ ╔══════════════════════════════════════════════════════════════════╗ ┃
+┃ ║  🔒 SANDBOXED SHELL ENVIRONMENT                                  ║ ┃
+┃ ╠══════════════════════════════════════════════════════════════════╣ ┃
+┃ ║  ✓ Resource Limits     ✓ Command Whitelist   Runtime: 45s       ║ ┃
+┃ ║  ✓ Path Restrictions   ✓ Monitoring Active   Executed: 12       ║ ┃
+┃ ║                                                Blocked: 3         ║ ┃
+┃ ╠══════════════════════════════════════════════════════════════════╣ ┃
+┃ ║                                                                  ║ ┃
+┃ ║  ════════════════════════════════════════════════════════════  ║ ┃
+┃ ║    Sandboxed Shell Terminal Interface                          ║ ┃
+┃ ║    Waiting for shell to initialize...                          ║ ┃
+┃ ║  ════════════════════════════════════════════════════════════  ║ ┃
+┃ ║                                                                  ║ ┃
+┃ ║  ╔════════════════════════════════════════════════════════════╗ ║ ┃
+┃ ║  ║         SANDBOXED SHELL ENVIRONMENT - ACTIVE               ║ ║ ┃
+┃ ║  ╠════════════════════════════════════════════════════════════╣ ║ ┃
+┃ ║  ║  Security Features:                                        ║ ║ ┃
+┃ ║  ║  ✓ Resource Limits (CPU: 30s, Memory: 100MB, Procs: 20)   ║ ║ ┃
+┃ ║  ║  ✓ Command Whitelist Enforcement                           ║ ║ ┃
+┃ ║  ║  ✓ Restricted File System Access                           ║ ║ ┃
+┃ ║  ║  ✓ All operations monitored and logged                     ║ ║ ┃
+┃ ║  ║                                                             ║ ║ ┃
+┃ ║  ║  Sandbox Directory: /Users/jatin/Desktop/os/sandbox        ║ ║ ┃
+┃ ║  ╚════════════════════════════════════════════════════════════╝ ║ ┃
+┃ ║                                                                  ║ ┃
+┃ ║  Type 'help' for available commands, 'stats' for statistics     ║ ┃
+┃ ║                                                                  ║ ┃
+┃ ║  sandbox> help                                                   ║ ┃
+┃ ║                                                                  ║ ┃
+┃ ║  Available Commands:                                             ║ ┃
+┃ ║    Built-in commands:                                            ║ ┃
+┃ ║      cd, exit, history, alias, unalias, help, stats             ║ ┃
+┃ ║                                                                  ║ ┃
+┃ ║    Whitelisted external commands:                                ║ ┃
+┃ ║      ls cat echo pwd grep touch mkdir rmdir cp mv head tail     ║ ┃
+┃ ║      wc sort uniq find which date whoami hostname sleep clear   ║ ┃
+┃ ║                                                                  ║ ┃
+┃ ║    Note: All file operations restricted to sandbox directory    ║ ┃
+┃ ║                                                                  ║ ┃
+┃ ║  sandbox> echo "Hello Sandbox!" > test.txt                       ║ ┃
+┃ ║  sandbox> cat test.txt                                           ║ ┃
+┃ ║  Hello Sandbox!                                                  ║ ┃
+┃ ║  sandbox> sudo ls                                                ║ ┃
+┃ ║  [SANDBOX BLOCKED] Command 'sudo' not allowed (security risk)    ║ ┃
+┃ ║  sandbox> _                                                      ║ ┃
+┃ ║                                                                  ║ ┃
+┃ ╠══════════════════════════════════════════════════════════════════╣ ┃
+┃ ║  sandbox> [Type your command here]_                              ║ ┃
+┃ ╠══════════════════════════════════════════════════════════════════╣ ┃
+┃ ║  Type 'help' for commands | 'exit' to quit | ↑↓ to scroll       ║ ┃
+┃ ║                                                                  ║ ┃
+┃ ║  ⚠ All commands monitored • Sandboxed environment active        ║ ┃
+┃ ╚══════════════════════════════════════════════════════════════════╝ ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+         Orange border = Sandboxed Environment Active
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                         COLOR SCHEME                                   ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+Background:        Dark blue-grey (#0F1419)
+Terminal Text:     Bright green  (#00FF64) - Normal output
+Prompt:            Cyan          (#64C8FF) - "sandbox>"
+Error/Blocked:     Red           (#FF5050) - Blocked commands
+Warning:           Yellow        (#FFFF64) - Warnings
+Sandbox Indicator: Orange        (#FFA500) - Border & header
+Header BG:         Dark grey     (#191E23) - Header background
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                      WHAT MAKES IT SPECIAL                             ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+1. VISUAL SECURITY INDICATORS
+   - Orange border around entire window
+   - "🔒 SANDBOXED" prominently displayed
+   - Real-time statistics in header
+   - Color-coded command responses
+
+2. PROFESSIONAL APPEARANCE
+   - Clean, modern terminal aesthetic
+   - Monaco/Courier monospace font
+   - Proper line spacing
+   - Smooth scrolling
+
+3. USER FRIENDLY
+   - Clear prompts and feedback
+   - Help text always visible
+   - Keyboard shortcuts listed
+   - Warning footer reminder
+
+4. REAL-TIME FEEDBACK
+   - Commands turn red when blocked
+   - Success commands in green
+   - Statistics update live
+   - Cursor blinks naturally
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                     DEMONSTRATION FLOW                                 ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+STEP 1: Launch GUI
+   → python3 sandbox_gui.py
+   → Window opens with orange border
+   → Header shows "SANDBOXED SHELL ENVIRONMENT"
+
+STEP 2: Show Banner
+   → Shell loads and shows security banner
+   → All security features listed with ✓ marks
+   → Sandbox directory path displayed
+
+STEP 3: Run Safe Commands (GREEN)
+   → help              (shows all commands)
+   → ls                (lists sandbox directory)
+   → echo "hi" > f.txt (creates file)
+   → cat f.txt         (reads file)
+
+STEP 4: Try Blocked Commands (RED)
+   → sudo ls           [SANDBOX BLOCKED]
+   → rm -rf /          [SANDBOX BLOCKED]
+   → cd /etc           [SANDBOX BLOCKED]
+
+STEP 5: Show Statistics
+   → stats             (displays execution stats)
+   → Shows runtime, executed count, blocked count
+
+STEP 6: Exit
+   → exit              (shows final stats)
+   → Window closes gracefully
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                      KEYBOARD SHORTCUTS                                ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+  Enter         Execute the current command
+  Backspace     Delete last character
+  ↑ Arrow       Scroll output up
+  ↓ Arrow       Scroll output down
+  Page Up       Scroll up faster (10 lines)
+  Page Down     Scroll down faster (10 lines)
+  Close Window  Exit the shell
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                     TECHNICAL HIGHLIGHTS                               ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+• Pygame for graphics and event handling
+• Subprocess for shell process communication
+• Threading for async I/O (non-blocking)
+• Queue for thread-safe message passing
+• 60 FPS refresh rate for smooth updates
+• 1000 line output buffer (scrollable)
+• Real-time color coding of output
+• Automatic bottom-scroll on new input
+
+
+╔════════════════════════════════════════════════════════════════════════╗
+║                         READY TO RUN!                                  ║
+╚════════════════════════════════════════════════════════════════════════╝
+
+Just type:  python3 sandbox_gui.py
+
+Then try these demo commands:
+
+1. help
+2. echo "Sandboxed!" > demo.txt
+3. cat demo.txt
+4. ls | grep txt
+5. sudo ls        (watch it get BLOCKED in red!)
+6. cd /etc        (watch it get BLOCKED in red!)
+7. stats
+8. exit
+
+You'll see ALL the sandboxing features in action with visual feedback!
+
+═══════════════════════════════════════════════════════════════════════════
+
+             🎉 Your terminal GUI is ready to impress! 🎉
+
+═══════════════════════════════════════════════════════════════════════════
+
