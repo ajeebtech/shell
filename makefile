@@ -6,7 +6,12 @@ TARGET = myshell
 SRC_SANDBOXED = project_sandboxed.c
 SRC_ORIGINAL = project.c
 
-all: $(TARGET)
+all: sandbox_commands $(TARGET)
+
+sandbox_commands:
+	@echo "Building sandbox commands..."
+	@cd sandbox_commands && $(MAKE) all
+	@echo "✓ Sandbox commands built"
 
 $(TARGET): $(SRC_SANDBOXED)
 	@echo "Building sandboxed shell..."
@@ -19,6 +24,7 @@ original: $(SRC_ORIGINAL)
 
 clean:
 	rm -f $(TARGET) myshell_original
+	@cd sandbox_commands && $(MAKE) clean 2>/dev/null || true
 
 setup:
 	@echo "Setting up sandbox environment..."

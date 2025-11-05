@@ -72,8 +72,8 @@ class SandboxedTerminal:
         
         # Tab completion
         self.available_commands = [
-            'cd', 'exit', 'history', 'alias', 'unalias', 'help', 'stats',
-            'ls', 'cat', 'echo', 'pwd', 'grep', 'touch', 'mkdir', 'rmdir', 
+            'cd', 'exit', 'print_history', 'add_alias', 'remove_alias', 'help', 'stats', 'commands',
+            'ls', 'cat', 'display', 'pwd', 'grep', 'touch', 'mkdir', 'rmdir', 
             'cp', 'mv', 'head', 'tail', 'wc', 'sort', 'uniq', 'find', 
             'which', 'date', 'whoami', 'hostname', 'sleep', 'clear'
         ]
